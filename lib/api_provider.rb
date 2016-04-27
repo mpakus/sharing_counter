@@ -28,10 +28,8 @@ module SharingCounter
       def request
         Faraday.get do |r|
           r.url URI.escape(request_url)
-          r.options = {
-            timeout:      @timeout,
-            open_timeout: @open_timeout
-          }
+          r.options[:timeout] = @timeout
+          r.options[:open_timeout] = @open_timeout
         end
       end
 
